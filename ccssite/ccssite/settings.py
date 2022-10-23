@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-AUTH_USER_MODEL = 'api.urls'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Application definition
 
