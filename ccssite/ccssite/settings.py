@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Sets the default mileage rate
-DEFAULT_MILAGE_RATE = 0.634
+DEFAULT_MILEAGE_RATE = 0.634
 
 WORK_CODES = (
     (1000, "Office Time"),
@@ -32,18 +33,16 @@ WORK_CODES = (
     (4800, "Electrical Design/Eng & Project Management")
 )
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yl$+wf#t8dhnb34^(enxv%m+s-34!k3&z83i8gnczxq!knmylf'
+SECRET_KEY = 'django-insecure-nefm5zdyw@uujj)gq5mim9n8do+r85^n52#g=gii+xiw@(_g*k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -70,6 +69,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 ROOT_URLCONF = 'ccssite.urls'
@@ -77,7 +77,9 @@ ROOT_URLCONF = 'ccssite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates', 'base')
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,7 +93,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ccssite.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
