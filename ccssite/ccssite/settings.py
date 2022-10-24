@@ -15,6 +15,23 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Sets the default mileage rate
+DEFAULT_MILAGE_RATE = 0.634
+
+WORK_CODES = (
+    (1000, "Office Time"),
+    (1200, "Vacation"),
+    (1300, "PTO / Sick Time"),
+    (1400, "Sales/Marketing & R&D"),
+    (1500, "Warrantee"),
+    (1600, "Travel Time"),
+    (1700, "Training"),
+    (2200, "Technician Labor"),
+    (4200, "PLC Programming"),
+    (4400, "HMI/SCADA Programming"),
+    (4800, "Electrical Design/Eng & Project Management")
+)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
