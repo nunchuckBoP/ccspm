@@ -16,6 +16,14 @@ class Timesheet(models.Model):
     start_date = models.DateField(verbose_name="Start Date")
     end_date = models.DateField(verbose_name="End Date")
     mileage_rate = models.DecimalField(verbose_name="Mileage Rate", default=settings.DEFAULT_MILAGE_RATE)
+    sumbitted_on = models.DateField(verbose_name="Submitted On", null=True, blank=True)
+    
+    @property
+    def submitted(self):
+        if submitted is not None:
+            return True
+        else:
+            return False
 
 class TimeEntry(models.Model):
     sheet = models.ForeignKey(Timesheet, on_delete=models.CASCADE)

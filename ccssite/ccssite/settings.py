@@ -45,7 +45,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Application definition
 
@@ -56,6 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
+    'accounts',
+    'timetrack',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 ROOT_URLCONF = 'ccssite.urls'
 
