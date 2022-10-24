@@ -15,7 +15,7 @@ class Timesheet(models.Model):
     created_on = models.DateField(verbose_name="Created On")
     start_date = models.DateField(verbose_name="Start Date")
     end_date = models.DateField(verbose_name="End Date")
-    mileage_rate = models.DecimalField(verbose_name="Mileage Rate", default=settings.DEFAULT_MILAGE_RATE)
+    mileage_rate = models.DecimalField(verbose_name="Mileage Rate", max_digits=6, decimal_places=3, default=settings.DEFAULT_MILEAGE_RATE)
     sumbitted_on = models.DateField(verbose_name="Submitted On", null=True, blank=True)
     
     @property
@@ -30,9 +30,9 @@ class TimeEntry(models.Model):
     date = models.DateField()
     job = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True, blank=True)
     work_code = models.IntegerField(verbose_name="Work Code", choices=settings.WORK_CODES)
-    reg_hrs = models.DecimalField(verbose_name="Regular Hours", null=True, blank=True)
-    ovt_hrs = models.DecimalField(verbose_name="Overtime Hours", null=True, blank=True)
-    dbl_hrs = models.DecimalField(verbose_name="Doubletime Hours", null=True, blank=True)
+    reg_hrs = models.DecimalField(verbose_name="Regular Hours", null=True, blank=True, max_digits=5, decimal_places=2)
+    ovt_hrs = models.DecimalField(verbose_name="Overtime Hours", null=True, blank=True, max_digits=5, decimal_places=2)
+    dbl_hrs = models.DecimalField(verbose_name="Doubletime Hours", null=True, blank=True, max_digits=5, decimal_places=2)
     desc = models.CharField(max_length=1024, verbose_name="Description of Work")
     
     @property
@@ -43,13 +43,13 @@ class ExpenseEntry(models.Model):
     sheet = models.ForeignKey(Timesheet, on_delete=models.CASCADE)
     date = models.DateField()
     job = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True, blank=True)
-    mileage_rate = models.DecimalField(verbose_name="Mileage Rate", default=settings.DEFAULT_MILEAGE_RATE, null=False, blank=False)
-    miles = models.DecimalField(null=True, blank=True)
-    food = models.DecimalField(verbose_name="Per Diem Food", null=True, blank=True)
-    air = models.DecimalField(verbose_name="Air Fare", null=True, blank=True)
-    parking = models.DecimalField(verbose_name="Tolls / Parking", null=True, blank=True)
-    meals = models.DecimalField(verbose_name="Business Meals", null=True, blank=True)
-    other = models.DecimalField(verbose_name="Other Expenses", null=True, blank=True)
+    mileage_rate = models.DecimalField(verbose_name="Mileage Rate", default=settings.DEFAULT_MILEAGE_RATE, null=False, blank=False, max_digits=5, decimal_places=2)
+    miles = models.DecimalField(null=True, blank=True, max_digits=20, decimal_places=2)
+    food = models.DecimalField(verbose_name="Per Diem Food", null=True, blank=True, max_digits=20, decimal_places=2)
+    air = models.DecimalField(verbose_name="Air Fare", null=True, blank=True, max_digits=20, decimal_places=2)
+    parking = models.DecimalField(verbose_name="Tolls / Parking", null=True, blank=True, max_digits=20, decimal_places=2)
+    meals = models.DecimalField(verbose_name="Business Meals", null=True, blank=True, max_digits=20, decimal_places=2)
+    other = models.DecimalField(verbose_name="Other Expenses", null=True, blank=True, max_digits=20, decimal_places=2)
     other_explain = models.CharField(verbose_name="Explanation of Expenses", max_length=1024, null=True, blank=True)
     
     @property
