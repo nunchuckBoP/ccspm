@@ -14,9 +14,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% page_title %}</title>
-        <h1>{% page_heading %}</h1>
-        <h3>{% page_subheading %}</h3>
+        {% block page_title %}<title>Home Page</title>{% endblock %}
+        {% block page_heading %}<h1>Big Heading</h1>{% endblock %}
+        {% block page_subheading %}<h3>Small Sub Heading</h3>{% endblock %}
     </head>
     <body class="d-flex flex-column h-100">
         <header>
